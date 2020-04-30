@@ -1,17 +1,21 @@
 {
   "name": "zanbo-ui",
   "version": "0.1.0",
-  "description": "基于React的为自己的博客定制的UI组件",
+  "description": "基于React为自己的博客定制的UI组件",
   "author": "zhangxu",
   "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "type": "dist/index.d.ts",
   "keywords": [
     "blog",
     "blog-ui",
     "react-blog"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc -p tsconfig.build.json",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "node-sass ./src/scss/index.scss ./dist/index.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
