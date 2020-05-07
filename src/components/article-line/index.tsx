@@ -1,9 +1,9 @@
-import ArticleLine from './ArticleLine';
-import Item from './Item'
+import ArticleLine, { IArticleLineProps } from './ArticleLine';
+import Item, { IArticleLineItemProps } from './Item'
 import { FC } from 'react';
 
-type IArticleLine = FC & {
-  Item: FC
+type IArticleLine = FC<IArticleLineProps> & {
+  Item: FC<IArticleLineItemProps>
 };
 
 const TransArticleLine = ArticleLine as IArticleLine;
