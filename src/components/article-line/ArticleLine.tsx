@@ -32,10 +32,12 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
 
     return React.Children.map(children, (child) => {
       const childElement = child as React.FunctionComponentElement<IArticleLineItemProps>;
-      if (childElement.type.displayName === 'ArticleLineItem') {
-        return React.cloneElement(childElement);
+
+      if (childElement.type.displayName !== 'ArticleLineItem') {
+        throw new Error('ArticleLine组件不接受非ArticleLineItem组件作为子组件');
       }
-      console.error('ArticleLine组件不接受非ArticleLineItem组件作为子组件');
+
+      return React.cloneElement(childElement);
     });
   }
 
@@ -46,4 +48,11 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
   )
 }
 
-export default ArticleLine;
+type IArticleLine = FC<IArticleLineProps> & {
+  Item: FC<IArticleLineItemProps>
+};
+
+const TransArticleLine = ArticleLine as IArticleLine;
+TransArticleLine.Item = ArticleLineItem;
+
+export default TransArticleLine;

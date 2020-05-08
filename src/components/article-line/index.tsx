@@ -1,12 +1,3 @@
-import ArticleLine, { IArticleLineProps } from './ArticleLine';
-import Item, { IArticleLineItemProps } from './Item'
-import { FC } from 'react';
+import ArticleLine from './ArticleLine';
 
-type IArticleLine = FC<IArticleLineProps> & {
-  Item: FC<IArticleLineItemProps>
-};
-
-const TransArticleLine = ArticleLine as IArticleLine;
-TransArticleLine.Item = Item;
-
-export default TransArticleLine;
+export default ArticleLine;
