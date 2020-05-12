@@ -1,0 +1,73 @@
+.zan-al {
+  position: relative;
+  padding: 20px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 46px;
+    width: 1px;
+    height: 100%;
+    background-color: #eee;
+    z-index: -1;
+  }
+
+  .zan-al-year {
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .zan-al-month {
+    position: absolute;
+    left: 28px;
+    margin-top: 5px;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 1em;
+    background-color: #c183f4;
+
+    >span {
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+
+  .zan-al-item {
+
+    margin-left: 40px;
+
+    .zan-al-item-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 16px;
+      padding: 4px 0;
+      transition: color .4s;
+
+      &::before {
+        content: "-";
+        position: absolute;
+        top: 4px;
+        left: -12px;
+        opacity: .5;
+      }
+
+      .zan-al-item-date {
+        padding-right: 4px;
+        white-space: nowrap;
+        letter-spacing: 2px;
+        font-size: 8px;
+        opacity: .6;
+      }
+
+      .zan-al-item-title {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+}

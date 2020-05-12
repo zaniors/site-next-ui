@@ -19,10 +19,17 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
   } = props;
 
   return (
-    <div className="zan-al-item">
-      <h2>{title}</h2>
-      <p>{intro}</p>
-    </div>
+    <article className="zan-al-item">
+      <a href="/" className="zan-al-item-content">
+        <h2 className="zan-al-item-title">{title}</h2>
+        <section className="zan-al-item-cover">
+          <img src="https://redspite.com/uploads/1587477767089.jpg" alt="cover-img" />
+        </section>
+        {
+          intro ? <p className="zan-al-item-intro">{intro}</p> : null
+        }
+      </a>
+    </article>
   )
 }
 ArticleLineItem.displayName = 'ArticleLineItem';

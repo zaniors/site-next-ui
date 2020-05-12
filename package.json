@@ -13,6 +13,7 @@
     "react-blog"
   ],
   "scripts": {
+    "start": "react-scripts start",
     "clean": "rimraf ./dist",
     "lint": "eslint --ext js,ts,tsx src",
     "build": "npm run clean && npm run build-ts && npm run build-css",

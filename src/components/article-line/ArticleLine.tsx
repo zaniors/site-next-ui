@@ -1,6 +1,8 @@
 import React, { FC, CSSProperties } from 'react';
 import classNames from 'classnames';
 import ArticleLineItem, { IArticleLineItemProps } from './Item';
+import ArticleLineYear from './Year';
+import ArticleLineMonth from './Month';
 
 export interface IArticleLineProps {
   list?: IArticleLineItemProps[];
@@ -33,11 +35,13 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
     return React.Children.map(children, (child) => {
       const childElement = child as React.FunctionComponentElement<IArticleLineItemProps>;
 
-      if (childElement.type.displayName !== 'ArticleLineItem') {
-        throw new Error('ArticleLine组件不接受非ArticleLineItem组件作为子组件');
+      if (childElement.type.displayName === 'ArticleLineItem'
+        || childElement.type.displayName === 'ArticleLineYear'
+        || childElement.type.displayName === 'ArticleLineMonth') {
+        return React.cloneElement(childElement);
       }
+      throw new Error('ArticleLine组件不接受非ArticleLineItem组件作为子组件');
 
-      return React.cloneElement(childElement);
     });
   }
 
@@ -49,10 +53,14 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
 }
 
 type IArticleLine = FC<IArticleLineProps> & {
-  Item: FC<IArticleLineItemProps>
+  Year: FC<{}>;
+  Month: FC<{}>;
+  Item: FC<IArticleLineItemProps>;
 };
 
 const TransArticleLine = ArticleLine as IArticleLine;
+TransArticleLine.Year = ArticleLineYear;
+TransArticleLine.Month = ArticleLineMonth;
 TransArticleLine.Item = ArticleLineItem;
 
 export default TransArticleLine;
