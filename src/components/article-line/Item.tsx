@@ -1,8 +1,11 @@
 import React, { FC, CSSProperties } from 'react';
+import classNames from 'classnames';
+import transDateType from '../util/checkDateType';
 
 export interface IArticleLineItemProps {
   id: string | number;
   title: string;
+  createTime?: string;
   intro?: string;
   cover?: string;
   className?: string;
@@ -14,19 +17,48 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
     title,
     intro,
     cover,
+    createTime,
     className,
     style
   } = props;
+  const preClass = 'zan-al-item';
+  const classes = classNames(preClass, className);
+
+  const createAlDate = () => {
+    if (createTime && transDateType(createTime)) {
+      const d = transDateType(createTime) as Date;
+      let month = '';
+      if (d.getMonth() < 9) {
+        month = '0' + (d.getMonth() + 1);
+      } else {
+        month = d.getMonth() + '';
+      }
+
+      return (
+        <span className="zan-al-item-date">
+          {month}-{d.getDate()}
+        </span>
+      )
+    }
+    return null;
+  }
 
   return (
-    <article className="zan-al-item">
-      <a href="/" className="zan-al-item-content">
-        <h2 className="zan-al-item-title">{title}</h2>
-        <section className="zan-al-item-cover">
-          <img src="https://redspite.com/uploads/1587477767089.jpg" alt="cover-img" />
-        </section>
+    <article className={classes} style={style}>
+      <a href="/" className={`${preClass}-content`}>
+        <h2 className="zan-al-item-title" data-testid="al-title">
+          {createAlDate()}
+          {title}
+        </h2>
         {
-          intro ? <p className="zan-al-item-intro">{intro}</p> : null
+          cover ?
+            <section className="zan-al-item-cover" data-testid="al-cover">
+              <img src={cover} alt="cover-img" />
+            </section>
+            : null
+        }
+        {
+          intro ? <p className="zan-al-item-intro ellipsis-2" data-testid="al-intro">{intro}</p> : null
         }
       </a>
     </article>

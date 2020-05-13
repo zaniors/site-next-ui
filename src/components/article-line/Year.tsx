@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
-const ArticleLineYear: FC = () => {
+const ArticleLineYear: FC<{ value: string | number; }> = ({ value }) => {
   return (
     <section className="zan-al-year">
-      <span>2020</span>
+      <span>{value}</span>
     </section>
   )
 }

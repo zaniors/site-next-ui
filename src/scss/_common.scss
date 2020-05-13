@@ -12,3 +12,19 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+.ellipsis {
+  @include ellipsis();
+}
+
+.ellipsis-2 {
+  @include ellipsis(2);
+}
+
+.ellipsis-3 {
+  @include ellipsis(3);
+}
+
+.ellipsis-4 {
+  @include ellipsis(4);
+}
