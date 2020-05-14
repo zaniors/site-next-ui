@@ -1,6 +1,6 @@
 {
   "name": "zanext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "基于React为自己的博客定制的UI组件",
   "author": "zhangxu",
   "private": false,
@@ -22,7 +22,7 @@
     "test": "react-scripts test --passWithNoTests",
     "test-nowatch": "cross-env CI=true npm run test",
     "eject": "react-scripts eject",
-    "prepublish": "npm run test-nowatch && npm run lint && npm run build"
+    "prepublishOnly": "npm run test-nowatch && npm run lint && npm run build"
   },
   "files": [
     "dist"
