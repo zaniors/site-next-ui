@@ -1,7 +1,7 @@
 import React from 'react';
-import ArticleLine from './ArticleLine';
+import ArticleLine from '../ArticleLine';
 import { render } from '@testing-library/react';
-import { IArticleLineItemProps } from './Item';
+import { IArticleLineItemProps } from '../Item';
 
 describe('测试ArticleLine组件', () => {
   it('测试初始组件带有List数据', () => {

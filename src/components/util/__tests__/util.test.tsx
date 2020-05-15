@@ -1,4 +1,4 @@
-import transDateType from './checkDateType';
+import transDateType from '../checkDateType';
 
 describe('测试工具类', () => {
   it('检测是否是有效的时间格式', () => {

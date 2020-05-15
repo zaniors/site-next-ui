@@ -11,7 +11,7 @@ export interface IArticleLineProps {
   style?: CSSProperties;
 }
 
-const ArticleLine: FC<IArticleLineProps> = (props) => {
+export const ArticleLine: FC<IArticleLineProps> = (props) => {
   const {
     list,
     className,
@@ -38,14 +38,10 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
         }
         return <Fragment key={props.id}>
           {
-            year ?
-              <ArticleLineYear value={year} />
-              : null
+            year && <ArticleLineYear value={year} />
           }
           {
-            month ?
-              <ArticleLineMonth value={month} />
-              : null
+            month && <ArticleLineMonth value={month} />
           }
           <ArticleLineItem {...props} />
         </Fragment>
@@ -55,13 +51,12 @@ const ArticleLine: FC<IArticleLineProps> = (props) => {
     return React.Children.map(children, (child) => {
       const childElement = child as React.FunctionComponentElement<IArticleLineItemProps>;
 
-      if (childElement.type.displayName === 'ArticleLineItem'
-        || childElement.type.displayName === 'ArticleLineYear'
-        || childElement.type.displayName === 'ArticleLineMonth') {
-        return React.cloneElement(childElement);
+      switch (childElement.type.displayName) {
+        case 'ArticleLineItem':
+        case 'ArticleLineYear':
+        case 'ArticleLineMonth':
+          return React.cloneElement(childElement);
       }
-      throw new Error('ArticleLine组件不接受非ArticleLineItem组件作为子组件');
-
     });
   }
 
