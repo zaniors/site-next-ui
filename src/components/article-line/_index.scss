@@ -61,7 +61,8 @@
       }
 
       .zan-al-item-cover {
-        width: 300px;
+        width: 100%;
+        max-width: 50%;
         padding-top: 10px;
 
         >img {
