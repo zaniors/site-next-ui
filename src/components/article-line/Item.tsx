@@ -46,7 +46,7 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
   return (
     <article className={classes} style={style}>
       <a href="/" className={`${preClass}-content`}>
-        <h2 className="zan-al-item-title" data-testid="al-title">
+        <h2 className="zan-al-item-title ellipsis" data-testid="al-title">
           {createAlDate()}
           {title}
         </h2>
