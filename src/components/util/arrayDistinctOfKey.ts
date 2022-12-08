@@ -12,11 +12,3 @@ export const arrayDistinctOfKey = <T>(arr: Array<T>, key: string): Array<T> => {
 }
 
 export default arrayDistinctOfKey;
-
-interface A {
-  a: string;
-  b: string;
-}
-
-function A(a: Extract<A, 'a'>) {
-}

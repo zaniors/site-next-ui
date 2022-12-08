@@ -1,6 +1,6 @@
-import React, { FC, CSSProperties } from 'react';
-import classNames from 'classnames';
-import transDateType from '../util/checkDateType';
+import classNames from 'classnames'
+import React, { CSSProperties, FC } from 'react'
+import transDateType from '../util/checkDateType'
 
 export interface IArticleLineItemProps {
   id: string | number;
@@ -10,16 +10,19 @@ export interface IArticleLineItemProps {
   cover?: string;
   className?: string;
   style?: CSSProperties;
+  onClick?: (id: string | number) => void
 }
 
 const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
   const {
+    id,
     title,
     intro,
     cover,
     createTime,
     className,
-    style
+    style,
+    onClick
   } = props;
   const preClass = 'zan-al-item';
   const classes = classNames(preClass, className);
@@ -45,7 +48,7 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
 
   return (
     <article className={classes} style={style}>
-      <a href="/" className={`${preClass}-content`}>
+      <section className={`${preClass}-content`} onClick={onClick?.bind(null, id)}>
         <h2 className="zan-al-item-title ellipsis" data-testid="al-title">
           {createAlDate()}
           {title}
@@ -60,7 +63,7 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
         {
           intro ? <p className="zan-al-item-intro ellipsis-2" data-testid="al-intro">{intro}</p> : null
         }
-      </a>
+      </section>
     </article>
   )
 }
