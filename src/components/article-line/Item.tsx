@@ -34,7 +34,7 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
       if (d.getMonth() < 9) {
         month = '0' + (d.getMonth() + 1);
       } else {
-        month = d.getMonth() + '';
+        month = d.getMonth() + 1 + '';
       }
 
       return (
