@@ -1,11 +1,15 @@
 import classNames from 'classnames'
 import React, { CSSProperties, FC } from 'react'
 import transDateType from '../util/checkDateType'
+import dateFormat from '../util/dateFormat'
 
 export interface IArticleLineItemProps {
   id: string | number;
   title: string;
   createTime?: string;
+  updateTime?: string;
+  tag?: string[];
+  category?: string[];
   intro?: string;
   cover?: string;
   className?: string;
@@ -20,6 +24,9 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
     intro,
     cover,
     createTime,
+    updateTime,
+    tag,
+    category,
     className,
     style,
     onClick
@@ -54,15 +61,34 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
           {title}
         </h2>
         {
+          intro ? <p className="zan-al-item-intro ellipsis-2" data-testid="al-intro">{intro}</p> : null
+        }
+        {
           cover ?
             <section className="zan-al-item-cover" data-testid="al-cover">
               <img src={cover} alt="cover-img" />
             </section>
             : null
         }
-        {
-          intro ? <p className="zan-al-item-intro ellipsis-2" data-testid="al-intro">{intro}</p> : null
-        }
+      </section>
+      <section className="zan-al-extra-info">
+        <section className="line"></section>
+        <section className="info">
+          <section className="item-text"><i className="zanior zan-create-time"></i>{dateFormat(createTime)}</section>
+          <section className="item-text"><i className="zanior zan-create-time"></i>{dateFormat(updateTime)}</section>
+          <section className="item-text">
+            <i className="zanior zan-tag"></i>
+            {
+              tag?.map((item, index) => (<span>{item}{`${index + 1 === tag.length ? '' : '、'}`}</span>))
+            }
+          </section>
+          <section className="item-text">
+            <i className="zanior zan-category"></i>
+            {
+              category?.map((item, index) => (<span>{item}{`${index + 1 === category.length ? '' : '、'}`}</span>))
+            }
+          </section>
+        </section>
       </section>
     </article>
   )
