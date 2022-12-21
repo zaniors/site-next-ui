@@ -74,20 +74,36 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
       <section className="zan-al-extra-info">
         <section className="line"></section>
         <section className="info">
-          <section className="item-text"><i className="zanior zan-create-time"></i>{dateFormat(createTime)}</section>
-          <section className="item-text"><i className="zanior zan-create-time"></i>{dateFormat(updateTime)}</section>
-          <section className="item-text">
-            <i className="zanior zan-tag"></i>
-            {
-              tag?.map((item, index) => (<span>{item}{`${index + 1 === tag.length ? '' : '、'}`}</span>))
-            }
-          </section>
-          <section className="item-text">
-            <i className="zanior zan-category"></i>
-            {
-              category?.map((item, index) => (<span>{item}{`${index + 1 === category.length ? '' : '、'}`}</span>))
-            }
-          </section>
+          {
+            createTime ?
+              <section className="item-text"><i className="zanior zan-create-time"></i>{dateFormat(createTime)}</section>
+              : null
+          }
+          {
+            updateTime ?
+              <section className="item-text"><i className="zanior zan-update-time"></i>{dateFormat(updateTime)}</section>
+              : null
+          }
+          {
+            tag && tag.length > 0 ?
+              <section className="item-text">
+                <i className="zanior zan-tag"></i>
+                {
+                  tag.map((item, index) => (<span>{item}{`${index + 1 === tag.length ? '' : '、'}`}</span>))
+                }
+              </section>
+              : null
+          }
+          {
+            category && category.length > 0 ?
+              <section className="item-text">
+                <i className="zanior zan-category"></i>
+                {
+                  category.map((item, index) => (<span>{item}{`${index + 1 === category.length ? '' : '、'}`}</span>))
+                }
+              </section>
+              : null
+          }
         </section>
       </section>
     </article>
