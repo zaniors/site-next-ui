@@ -51,6 +51,7 @@
       margin-left: 16px;
       padding: 10px 0;
       transition: color .4s;
+      cursor: pointer;
 
       &::before {
         position: absolute;
@@ -77,19 +78,27 @@
         }
       }
 
-      .zan-al-item-intro {
-        margin-top: 10px;
-      }
-
-      .zan-al-item-cover {
-        width: 100%;
-        max-width: 50%;
+      .text-content {
+        display: flex;
+        justify-content: space-between;
         margin-top: 10px;
 
-        >img {
-          width: auto;
-          max-width: 100%;
-          display: block;
+        .zan-al-item-intro {
+          flex: 1;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+
+        .zan-al-item-cover {
+          flex: 0 0 160px;
+          width: 160px;
+          margin-top: 10px;
+
+          >img {
+            width: auto;
+            max-width: 100%;
+            display: block;
+          }
         }
       }
     }
@@ -111,6 +120,19 @@
 
         .item-text {
           font-size: 12px;
+
+          .zanior {
+            font-size: 14px;
+            margin-right: 4px;
+          }
+
+          span {
+            cursor: pointer;
+
+            &:hover {
+              color: #c183f4;
+            }
+          }
         }
       }
     }

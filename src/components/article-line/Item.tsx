@@ -60,19 +60,20 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
           {createAlDate()}
           {title}
         </h2>
-        {
-          intro ? <p className="zan-al-item-intro ellipsis-2" data-testid="al-intro">{intro}</p> : null
-        }
-        {
-          cover ?
-            <section className="zan-al-item-cover" data-testid="al-cover">
-              <img src={cover} alt="cover-img" />
-            </section>
-            : null
-        }
+        <section className="text-content">
+          {
+            intro ? <p className="zan-al-item-intro ellipsis-4" data-testid="al-intro">{intro}</p> : null
+          }
+          {
+            cover ?
+              <section className="zan-al-item-cover" data-testid="al-cover">
+                <img src={cover} alt="cover-img" />
+              </section>
+              : null
+          }
+        </section>
       </section>
       <section className="zan-al-extra-info">
-        <section className="line"></section>
         <section className="info">
           {
             createTime ?
@@ -105,6 +106,7 @@ const ArticleLineItem: FC<IArticleLineItemProps> = (props) => {
               : null
           }
         </section>
+        <section className="line"></section>
       </section>
     </article>
   )
